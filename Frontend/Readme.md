@@ -3,7 +3,10 @@ this project adds a gui to your bbb server to help you convert a single recordin
 how to use:
 first install the bbb-mp4 plugin on the server
 disable the automation script:
+
+mv /var/bigbluebutton/playback/presentation/2.3/index_default.html /var/bigbluebutton/playback/presentation/2.3/index.html
 mv /usr/local/bigbluebutton/core/scripts/post_publish/bbb_mp4.rb /usr/local/bigbluebutton/core/scripts/post_publish/bbb_mp4.rb.old
+
 
 then install php 8.3 and php83-fpm
 
