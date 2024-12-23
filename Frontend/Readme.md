@@ -1,7 +1,9 @@
 this project adds a gui to your bbb server to help you convert a single recording to mp4 and delete or download it from the list it will create.
 
 how to use:
-first install the bbb-mp4 plugin on the server
+
+> first install the bbb-mp4 plugin on the server
+
 disable the automation script:
 
 mv /var/bigbluebutton/playback/presentation/2.3/index_default.html /var/bigbluebutton/playback/presentation/2.3/index.html
@@ -9,10 +11,11 @@ mv /var/bigbluebutton/playback/presentation/2.3/index_default.html /var/bigblueb
 mv /usr/local/bigbluebutton/core/scripts/post_publish/bbb_mp4.rb /usr/local/bigbluebutton/core/scripts/post_publish/bbb_mp4.rb.old
 
 
-then install php 8.3 and php83-fpm
+> then install php 8.3 and php83-fpm
 
-edit the nginx file: nano /usr/share/bigbluebutton/nginx/bbb-mp4.nginx
+> edit the nginx file: nano /usr/share/bigbluebutton/nginx/bbb-mp4.nginx
 
+```
 location /recording {
     root /var/www/bigbluebutton-default;
 
@@ -32,28 +35,28 @@ location /recording {
         deny all;
     }
 }
+```
+> upload and extract the files to /var/www/bigbluebutton-default/recording
 
-upload and extract the files to /var/www/bigbluebutton-default/recording
-
-ensure that nginx have full access to this directory:
+> ensure that nginx have full access to this directory:
 
 chmod -R 755 /var/www/bigbluebutton-default/recording
 chown -R www-data:www-data /var/www/bigbluebutton-default/recording
 
-in case of error when running the script grant nginx to access docker:
+> in case of error when running the script grant nginx to access docker:
 
 sudo usermod -aG docker www-data
 
-or add this line to sudo visudo:
+> or add this line to sudo visudo:
 
 www-data ALL=(ALL) NOPASSWD: /usr/bin/docker
 
-run these commands:
+> run these commands:
 
 systemctl reload nginx
 systemctl restart php8.3-fpm
 
-access the converter page:
+> access the converter page:
 
 https://serveraddress.com/recording/index.php
 
