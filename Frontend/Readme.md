@@ -16,7 +16,7 @@ mv /usr/local/bigbluebutton/core/scripts/post_publish/bbb_mp4.rb /usr/local/bigb
 > edit the nginx file: nano /usr/share/bigbluebutton/nginx/bbb-mp4.nginx
 
 ```
-location /recording {
+location /recording/ {
     root /var/www/bigbluebutton-default;
 
     index index.php index.html index.htm;
